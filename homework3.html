@@ -4,6 +4,7 @@
 			:root {
 				--var1: 50%;
 				--var2: 10px;
+				--red: #ff0000;
 			}
 			.cls_green {
 				color: green;
@@ -71,6 +72,13 @@
 				</p>
 			</section>
 		</article>
+
+		<section> Секция вне article(рамкой не выделяется) </section>
+
+		<article>
+			<b> <section> Секция внутри article и внутри тега b ("Пробел" между тегами означает любое вложение, вне зависимости от мультивложений тегов, поэтому тут рамкой выделяется) </section> </b>
+		</article>
+
 		<p><del> 
 			Существуют 3 натуральных числа, такие, что сумма кубов двух из них равна кубу третьего
 		</del></p>
@@ -107,9 +115,9 @@
 			</section>
 		</article>
 		<br> <p> Пример использования em для других свойств </p> <br>
-		<article style="height: 2em;">
+		<article style="font-size: 2em; height: 4em;">
 			<section>
-				<p style="height: 2em;">
+				<p style="font-size: em; height: 2em;">
 					Test Test Test
 				</p>
 			</section>
