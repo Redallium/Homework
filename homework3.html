@@ -1,0 +1,158 @@
+<html>
+	<head>
+		<style>
+			:root {
+				--var1: 50%;
+				--var2: 10px;
+			}
+			.cls_green {
+				color: green;
+				font-weight: 900;
+			}
+
+			#id1 {
+				color: blue;
+			}
+
+			del {
+				color: red;
+			}
+
+			article section {
+				border: 1px inset black;
+			}
+
+			p > i {
+				color: #fabc00;
+			}
+
+			p ~ b {
+				color: #ff00ff;
+			}
+
+			span.hov:hover {
+				background-color: blue;
+			}
+
+			span.act:active {
+				color: red;
+			}
+
+			li::before{
+				content: "(";
+			}
+
+			li::after{
+				content: ")";
+			}
+
+
+		</style>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<b> Вот тут под тегом b нет фиолетового </b>
+		<article> 
+			<section>
+				<h1 class="cls_green"> Секция1 </h1> 
+				<p id="id1">
+					Содержимое1
+				</p>
+				<b> А вот тут содержимое тега b уже фиолетовое </b>
+				<p>
+					Содержимое2
+				</p>
+			</section>
+			<br>
+			<section>
+				<h2 class="cls_green"> Секция2 </h2>
+				<p>
+					Содержимое3
+				</p>
+			</section>
+		</article>
+		<p><del> 
+			Существуют 3 натуральных числа, такие, что сумма кубов двух из них равна кубу третьего
+		</del></p>
+
+		<b> something </b>
+
+		<p> 
+			<b> 
+				<i> abc </i> def 
+			</b> 
+			<i> ghi </i> 
+		</p>
+		<i> kjl </i> <br>
+		<b> something </b> <br> <br>
+
+		<p> Продемонстрируем работу псевдокласса hover(Наведите на строку "something") </p>
+		<span class="hov"> something </span>
+		<p> Продемонстрируем работу псевдокласса hover(Нажмите на строку "something") </p>
+		<span class="act"> something </span>
+		<p> Продемонстрируем разницу em и rem </p>
+		<article style="font-size: 2em;">
+			<section>
+				<p style="font-size: 2em;">
+					Test Test Test
+				</p>
+			</section>
+		</article>
+		<br>
+		<article style="font-size: 2em;">
+			<section>
+				<p style="font-size: 2rem;">
+					Test Test Test
+				</p>
+			</section>
+		</article>
+		<br> <p> Пример использования em для других свойств </p> <br>
+		<article style="height: 2em;">
+			<section>
+				<p style="height: 2em;">
+					Test Test Test
+				</p>
+			</section>
+		</article>
+		<br>
+		<article style="width: 2em;">
+			<section>
+				<p style="width: 2em;">
+					Test Test Test
+				</p>
+			</section>
+		</article>
+		<br> <br>	
+		<p> Используем var и calc </p>
+		<p> Example </p>
+		<p style="border: calc(12px - var(--var2)) dashed black; width: 150px">
+			Example
+		</p>
+		<p> Используем см и % (px уже неоднократно извользовался) </p>
+		<p style="border: 1px inset black;border-radius: 1cm calc(var(--var1)/5);width: 150px">
+			Example
+		</p>
+		<p> Все виды display:</p>
+		<p> ABC <span style="display: block;"> Hello World! </span> DEF </p>
+		<br>
+		<p style="display: inline;"> ABC <p style="display: inline;"> Hello World! </p> DEF </p>
+		<br>
+		<p> Вот inline-block изображение <img src="Lev.jpg" width="20" height="20" style="display: inline-block;"> Обтекатеся текстом </p>
+		<br>
+		<p> Все виды position:</p>
+		<p style="position: fixed; bottom: 15px; right: 15px;"> Hello World, i`m fixed! </p>
+		<p style="position: relative; left: 30px"> Hello World, i`m relative! </p>
+		<p style="position: static;"> Hello World, i`m static! </p>
+		<p style="position: absolute; bottom: -1000px; right: 30px"> Hello World, i`m absolute! </p>
+		<br>
+		<p> Используем неизвестный с лекции тег direction </p>
+		<p style="direction: rtl; position: relative; right: 300px"> Hello World </p>
+		<br>
+		<p> Используем псевдоклассы ::before и ::after </p>
+		<ul>
+			<li>1 statement </li>
+			<li>2 statement </li>
+			<li>3 statement </li>
+		</ul>
+	</body>
+</html>
