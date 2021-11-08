@@ -2,12 +2,11 @@
 	<head>
 		<meta charset="utf-8">
 		<!--Добавим библиотеку math.js-->
-		<script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+		<!-- <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script> -->
 	</head>
 	<body>
 		<p> Привет, на этой страничке вы ничего не увидите, за содержательной частью прошу в консоль. </p>
 		<script type="text/javascript">
-			//import { sqrt } from "mathjs"
 			globalThis["PI"] = 3.1415926535;
 			function factorial(n){
 				let res = 1;
@@ -81,7 +80,7 @@
 			}
 			//Пункт_9
 			{
-				console.log("sqrt(-1) = %s", math.sqrt(-1).toString());
+				console.log("cosh(2) = %f", Math.cosh(2));
 			}
 		</script>
 	</body>
