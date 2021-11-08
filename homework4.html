@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--Добавим библиотеку math.js-->
+		<script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+	</head>
+	<body>
+		<p> Привет, на этой страничке вы ничего не увидите, за содержательной частью прошу в консоль. </p>
+		<script type="text/javascript">
+			//import { sqrt } from "mathjs"
+			globalThis["PI"] = 3.1415926535;
+			function factorial(n){
+				let res = 1;
+				if(n === 0) return 1;
+				for(let i = 1; i <= n; i++){
+					res = res * i;
+				}
+				return res;
+			}
+			//Пункт_1
+			console.log("Факториалы 0, 1 и 4 соответственно: %d, %d, %d", factorial(0), factorial(1), factorial(4));
+			//Пункт_2
+			{
+				var A = 1337;
+				console.log("Переменная A = 1337, заданная var внутри своего блока при обращении к ней в этом блоке возвращает: %d", A);
+			}
+			console.log("Переменная A = 1337, заданная var внутри своего блока при обращении к ней вне блока возвращает: %d", A);
+			{
+				let b = "1337";
+				console.log("Переменная b = \"1337\", заданная let внутри своего блока при обращении к ней в этом блоке возвращает: %s", b);
+			}
+			try{
+				console.log("Переменная b = \"1337\", заданная let внутри своего блока при обращении к ней вне блока возвращает: %s", b); //Тут будет ошибка
+			}
+			catch(error){
+				console.log("При обращении к переменной b вне блока, в которой мы её инициализировали с помощью let, поймали ошибку %s, так как обратились к несуществующей переменной", error.name)
+			}
+			//Пункт_3
+			{
+				console.log("Продемонстрируем отличие \"==\" и \"===\"");
+				let a = 1;
+				let b = "1";
+				console.log("a == b : %s", a == b);
+				console.log("a === b : %s", a === b);
+			}
+			//Пункт_4
+			{
+				console.log("typeof(4) = %s", typeof(4));
+				console.log("typeof(\"abracadabra\") = %s", typeof("abracadabra"));
+				console.log("typeof(true) = %s", typeof(true));
+				console.log("typeof(factorial) = %s", typeof(factorial));
+			}
+			//Пункт_5
+			{
+				let arr = [1, 2, 3, 4, 5];
+				console.log("Использование цикла for(...of...)");
+				for(let i of arr){
+					console.log("%d", i);
+				}
+			}
+			//Пункт_6
+			{
+				console.log("В начале кода зададим глобальную переменную PI");
+				console.log("PI = %f", PI);
+			}
+			//Пункт_7
+			{
+				console.log("Создадим стрелочную функцию и выведем результат для некоторых аргументов");
+				let sum = (a, b) => console.log("Sum = ", a + b);
+				sum(1, 2);
+				sum(2, 3);
+				sum(-1, 1);
+			}
+			//Пункт_8
+			{
+				console.log("Используем разрушающее присвоение");
+				let [a, b, c] = [1, "str", factorial];
+				console.log("a = %d", a);
+				console.log("b = %s", b);
+				console.log("c = %s", c);
+			}
+			//Пункт_9
+			{
+				console.log("sqrt(-4) = %s", math.sqrt(-1).toString());
+			}
+		</script>
+	</body>
+</html>
