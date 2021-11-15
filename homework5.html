@@ -1,0 +1,141 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<p> Привет, на этой страничке вы ничего не увидите, за содержательной частью прошу в консоль. </p>
+		<script type="text/javascript">
+			let print = x => console.log(x);
+			//Пункт_1
+			{
+				let Vector = {
+					x: 0,
+					y: 0,
+					z: 0,
+					printer() {
+						return `(${this.x}, ${this.y}, ${this.z})`;
+					},
+					norm() {
+						return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+					} 
+				}
+				print(Vector.x);
+				let v1 = Object.create(Vector);
+				print(v1);
+				print(v1.printer());
+				print(v1.norm());
+				//Посмотрим наследование
+				Vector.x = 1337;
+				print(v1.x);
+			}
+			print("--------");
+			//Пункт_2
+			{
+				class Vector {
+					constructor(x, y, z) {
+						this.x = x;
+						this.y = y;
+						this.z = z;
+						this.dim = "3d";
+					}
+					printer() {
+						return `(${this.x}, ${this.y}, ${this.z})`;
+					}
+					norm() {
+						return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+					} 
+				}
+				let v1 = new Vector(3, 4, 0);
+				print(v1.printer());
+				print(v1.norm());
+				//Посмотрим наследование
+				print(v1.dim);
+			}
+			print("--------");
+			//Пункт_4
+			{
+				let Vector = {x: 0, y: 0, z: 0};
+				//Невидимое
+				Object.defineProperty(Vector, "dim", {
+					enumerable: false,
+					value: "3d",
+				});
+				print(Vector.dim);
+				for(let i in Vector){
+					print(i);
+				}
+
+				//Меняет что-то помимо себя
+				Object.defineProperty(Vector, "w", {
+					set: function(value) {
+						this.dim = "4d";
+						return value;
+					}
+				});
+				print(Vector.dim);
+				Vector.w = 1;
+				print(Vector.dim);
+			}
+			print("--------");
+			//Пункт_5
+			{
+				A = [1, 2, 3];
+				try{
+					print(A.norm());
+				}
+				catch(error){
+					console.log("При вызывании метода norm для массива вылезает ошибка %s", error.name);
+				}
+			}
+			print("--------");
+			//Пункт_6
+			{
+				for(let i in String){
+					print(i);
+				}
+				String.prototype.printer = function(){
+					console.log(this);
+				}
+				str = "Hello";
+				str.printer();
+			}
+			print("--------");
+			//Пункт_7
+			{
+				//Защищённое свойство dim
+				class Vector {
+					constructor(x, y, z) {
+						this.x = x;
+						this.y = y;
+						this.z = z;
+						this._dim = "3d";
+					}
+					get dim(){
+						return this._dim;
+					}
+				}
+				let v1 = new Vector(1, 2, 1, "3d");
+				v1.x = 0;
+				v1.dim = "4d";
+				print(v1.dim);
+				print(v1.x);
+
+				//Приватное свойство
+				class num_less_than_256 {
+					#MaxNum = 256;
+					#checkNum(num) {
+						if(num > this.MaxNum) throw new Error("Overflow");
+					}
+				}
+					let N = new num_less_than_256();
+					/* try{
+						N.#MaxNum = 1000;  //Вылезает ошибка, так как нельзя обратиться к приватному свойству
+					}
+					catch(error){
+						console.log("Попытались обратиться к приватному свойству MaxNum и словили ошибку %s", error.name);
+					} */
+
+			}
+		</script>
+	</body>
+</html>
