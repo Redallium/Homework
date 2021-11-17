@@ -52,6 +52,23 @@
 				print(v1.dim);
 			}
 			print("--------");
+			//Пункт_3
+			{
+				class Rectangle {
+					  constructor(h, w){
+					  	this.h = h;
+					    this.w = w;
+					  }
+				}
+
+				class Square extends Rectangle {
+					constructor(l) {
+					super(l, l);
+					}
+				}
+				let s = new Square(2);
+				print(s);
+			}
 			//Пункт_4
 			{
 				let Vector = {x: 0, y: 0, z: 0};
@@ -79,12 +96,19 @@
 			print("--------");
 			//Пункт_5
 			{
-				A = [1, 2, 3];
+				class Vector {
+					constructor(x, y, z) {
+						this.x = x;
+						this.y = y;
+						this.z = z;
+					}
+				}
+				let v1 = new Vector(3, 4, 0);
 				try{
-					print(A.norm());
+					print(v1.sum());
 				}
 				catch(error){
-					console.log("При вызывании метода norm для массива вылезает ошибка %s", error.name);
+					console.log("При вызывании метода sum для класса вектора вылезает ошибка %s", error.name);
 				}
 			}
 			print("--------");
@@ -135,6 +159,21 @@
 						console.log("Попытались обратиться к приватному свойству MaxNum и словили ошибку %s", error.name);
 					} */
 
+			}
+			//Пункт_7_1
+			{
+				let HW = {
+  					printHelloWorld(){
+    					print(`${this.name} says: Hello World!`);
+  					},
+				};
+				class User{
+  					constructor(name) {
+    					this.name = name;
+ 					}
+				}
+				Object.assign(User.prototype, HW);
+				new User("Lev").printHelloWorld();
 			}
 		</script>
 	</body>
