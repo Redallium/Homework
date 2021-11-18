@@ -52,6 +52,21 @@
 				print(v1.dim);
 			}
 			print("--------");
+			//Пункт_2_1
+			{
+				let predator = {
+					eats: true
+				}
+
+				let lion = {
+					growls: true
+				};
+
+				lion.__proto__ = predator;
+				print(lion.eats);
+				print(lion.growls);
+			}
+			print("--------");
 			//Пункт_3
 			{
 				class Rectangle {
@@ -96,20 +111,11 @@
 			print("--------");
 			//Пункт_5
 			{
-				class Vector {
-					constructor(x, y, z) {
-						this.x = x;
-						this.y = y;
-						this.z = z;
-					}
+				function print_input() {
+					var Str = [].join.call(arguments, ';');
+					print(Str);
 				}
-				let v1 = new Vector(3, 4, 0);
-				try{
-					print(v1.sum());
-				}
-				catch(error){
-					console.log("При вызывании метода sum для класса вектора вылезает ошибка %s", error.name);
-				}
+				print_input(1337, 228, "red");
 			}
 			print("--------");
 			//Пункт_6
