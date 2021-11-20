@@ -62,7 +62,7 @@
 					growls: true
 				};
 
-				lion.__proto__ = predator;
+				Object.setPrototypeOf(lion, predator);
 				print(lion.eats);
 				print(lion.growls);
 			}
