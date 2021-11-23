@@ -65,8 +65,9 @@
 				//Пункт_4(Вставка перед элементом)
 				{
 					const $my_p = document.createElement('p');
+					let ref = document.body.childNodes[3];
 					$my_p.textContent = "Я текст в теге \"p\", меня вставили перед span";
-					document.body.insertBefore($my_p, document.body.childNodes[3]);
+					document.body.insertBefore($my_p, ref);
 				}
 				//Пункт_5(Поиск всех элементов по селектору)
 				{
