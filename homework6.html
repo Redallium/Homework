@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+		<p class="c1"> Привет, я сижу в теге "p" </p>
+		<span> Привет, я сижу в теге "span" </span>
+		<p> <b id="id_b"> Привет, я сижу в теге "b", который в теге "p" </b> </p>
+
+		<button id="id_button_1"> Кликнешь? </button>
+		<br>
+		<button id="id_button_2" onclick="event.stopPropagation()"> На меня если кликать, на мне и остановится распространение эвента нажатия на меня </button> 
+		<br>
+		<a id="myvk" href="https://vk.com/redallium"> По мне ты никуда не перейдешь xD </a>
+
+
+
+
+
+
+
+		<script type="text/javascript">
+			let print = x => console.log(x);
+			//Общая часть
+			{
+				{
+				//Пункт_1(Создать Элемент)
+					const $newP_1 = document.createElement('p');
+					$newP_1.textContent = "Я текст, созданный внутри скрипта(№1)";
+					let elem = document.body;
+					elem.appendChild($newP_1);
+
+				//Пункт_2(Удалить Элемент)
+					elem.removeChild($newP_1); //То есть мы создали, и сразу удалили тег newP_1
+				//Пункт_3(Навигация по дереву + Атрибуты)
+					for (let i = 0; i < document.body.childNodes.length; i++) {
+      					console.log("%d: %s", i, document.body.childNodes[i]);
+      					print(document.body.childNodes[i].attributes);
+    				}
+    			//Пункт_4(Переменная arguments)
+    				function print_input() {
+						let Str = [].join.call(arguments, ';');
+						print(Str);
+					}
+					print_input("arg1", "arg2", "arg3");
+    			}
+			}
+			print("Конец общей части.");
+			print("Начало индивидуальной части");
+			//Индивидуальная часть
+			{
+				//Пункт_1(Первый потомок)
+				{
+					print(document.body.firstElementChild);
+				}
+				//Пункт_2(Последний узел)
+				{
+					print(document.body.childNodes[document.body.childNodes.length - 1]); //Либо написать .lastChild
+				}
+				//Пункт_3(Предыдущий элемент)
+				{
+					print(document.getElementById("id_b").previousElementSibling);
+				}
+				//Пункт_4(Вставка перед элементом)
+				{
+					const $my_p = document.createElement('p');
+					let ref = document.body.childNodes[3];
+					$my_p.textContent = "Я текст в теге \"p\", меня вставили перед span";
+					ref.parentNode.insertBefore($my_p, ref);
+				}
+				//Пункт_5(Поиск всех элементов по селектору)
+				{
+					let P = document.querySelectorAll("p");
+					print(P);
+				}
+				//Пункт_6(Установка класса)
+				{
+					document.body.childNodes[4].classList.add("handmade");
+					print(document.body.childNodes[4]);
+				}
+				//Пункт_7(Мышка)
+				{
+					id_button_1.onclick = function(event) {
+						alert("Ладно.");
+					}
+				}
+				//Пункт_8(remove event)
+				{
+					let listener = function(event) {
+						alert("Не надо.");
+					}
+					document.body.addEventListener('click', listener, false); //При клике в любую точку страницы выдаёт alert(Я проверил)
+					document.body.removeEventListener('click', listener, false); //А тут уже не выдаёт
+				}
+				//Пункт_9(Остановка распространение Эвента)
+				{
+					id_button_2.onclick = function(event) {
+						alert("Ок.");
+					}
+				}
+				//Пункт_10(add event)
+				{
+					//Уже реализовано в пункте 8
+				}
+				//Пункт_11(Предотвращение стандартного действия)
+				{
+					let myvk = document.getElementById("myvk");
+					myvk.addEventListener("click", function(event) {
+						event.preventDefault();
+					}, false);
+				}
+				//Пункт_12(attribute event (add/remove))
+				{
+					//Уже реализовано в пункте 11
+				}
+			}
+		</script>
+	</body>
+</html>
